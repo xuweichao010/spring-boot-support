@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.onetozero</groupId>
+    <artifactId>spring-boot-support</artifactId>
+    <version>2.7.6.M1-SNAPSHOT</version>
+    <modules>
+        <module>spring-boot-starter-data-redis-support</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <properties>
+        <easybatis.version>3.5.11.M1-SNAPSHOT</easybatis.version>
+        <spring-boot.version>2.7.6</spring-boot.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>my-maven</id>
+            <url>http://maven.onetozero.cn/repository/maven-public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>onetozero-snapshots</id>
+            <url>http://maven.onetozero.cn/repository/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>onetozero-release</id>
+            <url>http://maven.onetozero.cn/repository/release/</url>
+        </repository>
+    </distributionManagement>
+
+
+</project>
